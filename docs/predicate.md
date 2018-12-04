@@ -6,7 +6,7 @@ sidebar_label: Predicate Queries
 
 ## Predicates
 
-At any step in a location path, the selected items can be filtered using a predicate - [expr] where expr evaluates to a Boolean value.  Each item in the selection is tested against the expression, if it evaluates to true, then the item is kept; if false, it is removed from the selection. The expression is evaluated relative to the current (context) item being tested, so if the predicate expression performs navigation, then it is relative to this context item.
+At any step in a location path, the selected items can be filtered using a predicate - `[expr]` where `expr` evaluates to a Boolean value.  Each item in the selection is tested against the expression, if it evaluates to `true`, then the item is kept; if `false`, it is removed from the selection. The expression is evaluated relative to the current (context) item being tested, so if the predicate expression performs navigation, then it is relative to this context item.
 
 #### Examples:
 
