@@ -4,24 +4,27 @@ title: Date/Time functions
 sidebar_label: Date/Time Functions
 ---
 
-## `$now([picture [, timezone]])`
+## `$now()`
+__Signature:__ `$now([picture [, timezone]])`
 
 Generates a UTC timestamp in ISO 8601 compatible format and returns it as a string.  All invocations of `$now()` within an evaluation of an expression will all return the same timestamp value
 
 __Examples__
 
-`$now()` => `"2017-05-15T15:12:59.152Z"`
+- `$now()` => `"2017-05-15T15:12:59.152Z"`
 
 
 ## `$millis()`
+__Signature:__ `$millis()`
 
 Returns the number of milliseconds since the Unix *Epoch* (1 January, 1970 UTC) as a number.  All invocations of `$millis()` within an evaluation of an expression will all return the same value
 
 __Examples__  
-`$millis()` => `1502700297574`
+- `$millis()` => `1502700297574`
 
 
-## `$fromMillis(number [, picture [, timezone]])`
+## `$fromMillis()`
+__Signature:__ `$fromMillis(number [, picture [, timezone]])`
 
 Convert the `number` representing milliseconds since the Unix *Epoch* (1 January, 1970 UTC) to a formatted string representation of the timestamp  as specified by the `picture` string.
 
@@ -36,10 +39,11 @@ east of UTC, negative offset for timezones west of UTC.
 
 __Examples__
 
-`$fromMillis(1510067557121)` => `"2017-11-07T15:12:37.121Z"`
+- `$fromMillis(1510067557121)` => `"2017-11-07T15:12:37.121Z"`
 
 
-## `$toMillis(timestamp [, picture])`
+## `$toMillis()`
+__Signature:__ `$toMillis(timestamp [, picture])`
 
 Convert a `timestamp` string in the [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format to the number of milliseconds since the Unix *Epoch* (1 January, 1970 UTC) as a number.
 

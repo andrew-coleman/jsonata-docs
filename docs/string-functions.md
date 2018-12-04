@@ -4,7 +4,8 @@ title: String functions
 sidebar_label: String Functions
 ---
 
-## `$string(arg)`
+## `$string()`
+__Signature:__ `$string(arg)`
 
 Casts the `arg` parameter to a string using the following casting rules
 
@@ -17,18 +18,20 @@ If `arg` is not specified (i.e. this function is invoked with no arguments), the
 
 __Examples__
 
-`$string(5)` => `"5"`  
-`[1..5].$string()` => `["1", "2", "3", "4", "5"]`
+- `$string(5)` => `"5"`  
+- `[1..5].$string()` => `["1", "2", "3", "4", "5"]`
 
-## `$length(str)`
+## `$length()`
+__Signature:__ `$length(str)`
 
 Returns the number of characters in the string `str`.  If `str` is not specified (i.e. this function is invoked with no arguments), then the context value is used as the value of `str`.  An error is thrown if `str` is not a string.
 
 __Examples__
 
-`$length("Hello World")` => `11`
+- `$length("Hello World")` => `11`
 
-## `$substring(str, start[, length])`
+## `$substring()`
+__Signature:__ `$substring(str, start[, length])`
 
 Returns a string containing the characters in the first parameter `str` starting at position `start` (zero-offset).  If `str` is not specified (i.e. this function is invoked with only the numeric argument(s)), then the context value is used as the value of `str`.  An error is thrown if `str` is not a string.
 
@@ -38,46 +41,51 @@ If `start` is negative then it indicates the number of characters from the end o
 
 __Examples__
 
-`$substring("Hello World", 3)` => `"lo World"`  
-`$substring("Hello World", 3, 5)` => `"lo Wo"`  
-`$substring("Hello World", -4)` => `"orld"`  
-`$substring("Hello World", -4, 2)` => `"or"`
+- `$substring("Hello World", 3)` => `"lo World"`  
+- `$substring("Hello World", 3, 5)` => `"lo Wo"`  
+- `$substring("Hello World", -4)` => `"orld"`  
+- `$substring("Hello World", -4, 2)` => `"or"`
 
-## `$substringBefore(str, chars)`
+## `$substringBefore()`
+__Signature:__ `$substringBefore(str, chars)`
 
 Returns the substring before the first occurrence of the character sequence `chars` in `str`.  If `str` is not specified (i.e. this function is invoked with only one argument), then the context value is used as the value of `str`.  If `str` does not contain `chars`, then it returns `str`.   An error is thrown if `str` and `chars` are not strings.
 
 __Examples__
 
-`$substringBefore("Hello World", " ")` => `"Hello"`
+- `$substringBefore("Hello World", " ")` => `"Hello"`
 
-## `$substringAfter(str, chars)`
+## `$substringAfter()`
+__Signature:__ `$substringAfter(str, chars)`
 
 Returns the substring after the first occurrence of the character sequence `chars` in `str`.  If `str` is not specified (i.e. this function is invoked with only one argument), then the context value is used as the value of `str`.  If `str` does not contain `chars`, then it returns `str`.   An error is thrown if `str` and `chars` are not strings.
 
 __Examples__
 
-`$substringAfter("Hello World", " ")` => `"World"`
+- `$substringAfter("Hello World", " ")` => `"World"`
 
 
-## `$uppercase(str)`
+## `$uppercase()`
+__Signature:__ `$uppercase(str)`
 
 Returns a string with all the characters of `str` converted to uppercase.  If `str` is not specified (i.e. this function is invoked with no arguments), then the context value is used as the value of `str`.  An error is thrown if `str` is not a string.
 
 __Examples__
 
-`$uppercase("Hello World")` => `"HELLO WORLD"`
+- `$uppercase("Hello World")` => `"HELLO WORLD"`
 
 
-## `$lowercase(str)`
+## `$lowercase()`
+__Signature:__ `$lowercase(str)`
 
 Returns a string with all the characters of `str` converted to lowercase.  If `str` is not specified (i.e. this function is invoked with no arguments), then the context value is used as the value of `str`.  An error is thrown if `str` is not a string.
 
 __Examples__
 
-`$lowercase("Hello World")` => `"hello world"`
+- `$lowercase("Hello World")` => `"hello world"`
 
-## `$trim(str)`
+## `$trim()`
+__Signature:__ `$trim(str)`
 
 Normalizes and trims all whitespace characters in `str` by applying the following steps:
 
@@ -89,22 +97,24 @@ If `str` is not specified (i.e. this function is invoked with no arguments), the
 
 __Examples__
 
-`$trim("   Hello    \n World  ")` => `"Hello World"`
+- `$trim("   Hello    \n World  ")` => `"Hello World"`
 
 
-## `$pad(str, width [, char])`
+## `$pad()`
+__Signature:__ `$pad(str, width [, char])`
 
 Returns a copy of the string `str` with extra padding, if necessary, so that its total number of characters is at least the absolute value of the `width` parameter.  If `width` is a positive number, then the string is padded to the right; if negative, it is padded to the left.  The optional `char` argument specifies the padding character(s) to use.  If not specified, it defaults to the space character.
 
 __Examples__
 
-`$pad("foo", 5)` => `"foo  "`
-`$pad("foo", -5)` => `"  foo"`
-`$pad("foo", -5, "#")` => `"##foo"`
-`$formatBase(35, 2) ~> $pad(-8, '0')` => `"00100011"`
+- `$pad("foo", 5)` => `"foo  "`
+- `$pad("foo", -5)` => `"  foo"`
+- `$pad("foo", -5, "#")` => `"##foo"`
+- `$formatBase(35, 2) ~> $pad(-8, '0')` => `"00100011"`
 
 
-## `$contains(str, pattern)`
+## `$contains()`
+__Signature:__ `$contains(str, pattern)`
 
 Returns `true` if `str` is matched by `pattern`, otherwise it returns `false`. If `str` is not specified (i.e. this function is invoked with one argument), then the context value is used as the value of `str`.
 
@@ -112,14 +122,15 @@ The `pattern` parameter can either be a string or a regular expression (regex). 
 
 __Examples__
 
-`$contains("abracadabra", "bra")` => `true`  
-`$contains("abracadabra", /a.*a/)` => `true`  
-`$contains("abracadabra", /ar.*a/)` => `false`  
-`$contains("Hello World", /wo/)` => `false`  
-`$contains("Hello World", /wo/i)` => `true`  
-`Phone[$contains(number, /^077/)]` => `{ "type": "mobile", "number": "077 7700 1234" }`
+- `$contains("abracadabra", "bra")` => `true`  
+- `$contains("abracadabra", /a.*a/)` => `true`  
+- `$contains("abracadabra", /ar.*a/)` => `false`  
+- `$contains("Hello World", /wo/)` => `false`  
+- `$contains("Hello World", /wo/i)` => `true`  
+- `Phone[$contains(number, /^077/)]` => `{ "type": "mobile", "number": "077 7700 1234" }`
 
-## `$split(str, separator [, limit])`
+## `$split()`
+__Signature:__ `$split(str, separator [, limit])`
 
 Splits the `str` parameter into an array of substrings.  If `str` is not specified, then the context value is used as the value of `str`.  It is an error if `str` is not a string.  
 
@@ -129,11 +140,12 @@ The optional `limit` parameter is a number that specifies the maximum number of 
 
 __Examples__
 
-`$split("so many words", " ")` => `[ "so", "many", "words" ]`  
-`$split("so many words", " ", 2)` => `[ "so", "many" ]`  
-`$split("too much, punctuation. hard; to read", /[ ,.;]+/)` => `["too", "much", "punctuation", "hard", "to", "read"]`
+- `$split("so many words", " ")` => `[ "so", "many", "words" ]`  
+- `$split("so many words", " ", 2)` => `[ "so", "many" ]`  
+- `$split("too much, punctuation. hard; to read", /[ ,.;]+/)` => `["too", "much", "punctuation", "hard", "to", "read"]`
 
-## `$join(array[, separator])`
+## `$join()`
+__Signature:__ `$join(array[, separator])`
 
 Joins an array of component strings into a single concatenated string with each component string separated by the optional `separator` parameter.
 
@@ -143,10 +155,11 @@ If `separator` is not specified, then it is assumed to be the empty string, i.e.
 
 __Examples__
 
-`$join(['a','b','c'])` => `"abc"`  
-`$split("too much, punctuation. hard; to read", /[ ,.;]+/, 3) ~> $join(', ')` => `"too, much, punctuation"`
+- `$join(['a','b','c'])` => `"abc"`  
+- `$split("too much, punctuation. hard; to read", /[ ,.;]+/, 3) ~> $join(', ')` => `"too, much, punctuation"`
 
-## `$match(str, pattern [, limit])`
+## `$match()`
+__Signature:__ `$match(str, pattern [, limit])`
 
 Applies the `str` string to the `pattern` regular expression and returns an array of objects, with each object containing information about each occurrence of a match withing `str`.
 
@@ -181,7 +194,8 @@ __Examples__
 ]
 ```
 
-## `$replace(str, pattern, replacement [, limit])`
+## `$replace()`
+__Signature:__ `$replace(str, pattern, replacement [, limit])`
 
 Finds occurrences of `pattern` within `str` and replaces them with `replacement`.
 
@@ -201,19 +215,6 @@ If the `replacement` parameter is a function, then it is invoked for each match 
 The optional `limit` parameter,  is a number that specifies the maximum number of replacements to make before stopping.  The remainder of the input beyond this limit will be copied to the output unchanged.
 
 __Examples__
-
-`$replace("John Smith and John Jones", "John", "Mr")` => `"Mr Smith and Mr Jones"`  
-`$replace("John Smith and John Jones", "John", "Mr", 1)` => `"Mr Smith and John Jones"`  
-`$replace("abracadabra", /a.*?a/, "*")` => `"*c*bra"`  
-`$replace("John Smith", /(\w+)\s(\w+)/, "$2, $1")` => `"Smith, John"`  
-`$replace("265USD", /([0-9]+)USD/, "$$$1")` => `"$265"`  
-```
-(
-  $convert := function($m) { ($number($m.groups[0]) - 32) * 5/9 & "C" };
-  $replace("temperature = 68F today", /(\d+)F/, $convert)
-)
-```
-=> `"temperature = 20C today"`
 
   <div class="jsonata-ex">
     <div>$replace("John Smith and John Jones", "John", "Mr")</div>
@@ -251,7 +252,8 @@ __Examples__
   </div>
 
 
-## `$eval(expr [, context])`
+## `$eval()`
+__Signature:__ `$eval(expr [, context])`
 
 Parses and evaluates the string `expr` which contains literal JSON or a JSONata expression using the current context as the context for evaluation.
 
@@ -272,18 +274,20 @@ __Examples__
 Optionally override the context by specifying the second parameter
 
 ## `$base64encode()`
+__Signature:__ `$base64encode()`
 
 Converts an ASCII string to a base 64 representation. Each each character in the string is treated as a byte of binary data. This requires that all characters in the string are in the 0x00 to 0xFF range, which includes all characters in URI encoded strings. Unicode characters outside of that range are not supported.
 
 __Examples__  
 
-`$base64encode("myuser:mypass")` => `"bXl1c2VyOm15cGFzcw=="`
+- `$base64encode("myuser:mypass")` => `"bXl1c2VyOm15cGFzcw=="`
 
 
 ## `$base64decode()`
+__Signature:__ `$base64decode()`
 
 Converts base 64 encoded bytes to a string, using a UTF-8 Unicode codepage.
 
 __Examples__  
 
-`$base64decode("bXl1c2VyOm15cGFzcw==")` => `"myuser:mypass"`
+- `$base64decode("bXl1c2VyOm15cGFzcw==")` => `"myuser:mypass"`

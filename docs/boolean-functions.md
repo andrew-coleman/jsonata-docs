@@ -4,7 +4,8 @@ title: Boolean functions
 sidebar_label: Boolean Functions
 ---
 
-## `$boolean(arg)`
+## `$boolean()`
+__Signature:__ `$boolean(arg)`
 
 Casts the argument to a Boolean using the following rules:
   
@@ -24,10 +25,12 @@ Casts the argument to a Boolean using the following rules:
 | function | `false` |
 
 
-## `$not(arg)`
+## `$not()`
+__Signature:__ `$not(arg)`
 
 Returns Boolean NOT on the argument.  `arg` is first cast to a boolean
   
-## `$exists(arg)`
+## `$exists()`
+__Signature:__ `$exists(arg)`
 
 Returns Boolean `true` if the arg expression evaluates to a value, or `false` if the expression does not match anything (e.g. a path to a non-existent field reference).

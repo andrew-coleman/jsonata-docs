@@ -4,7 +4,8 @@ title: Higher order functions
 sidebar_label: Higher Order Functions
 ---
 
-## `$map(array, function)`
+## `$map()`
+__Signature:__ `$map(array, function)`
 
 Returns an array containing the results of applying the `function` parameter to each value in the `array` parameter.
 
@@ -15,7 +16,7 @@ The function that is supplied as the second parameter must have the following si
 Each value in the input array is passed in as the first parameter in the supplied function.  The index (position) of that value in the input array is passed in as the second parameter, if specified.  The whole input array is passed in as the third parameter, if specified.  
 
 __Examples__  
-`$map([1..5], $string)` => `["1", "2", "3", "4", "5"]`
+- `$map([1..5], $string)` => `["1", "2", "3", "4", "5"]`
 
 With user-defined (lambda) function:
 ```
@@ -35,7 +36,8 @@ evaluates to:
 ]
 ```
 
-## `$filter(array, function)`
+## `$filter()`
+__Signature:__ `$filter(array, function)`
 
 Returns an array containing only the values in the `array` parameter that satisfy the `function` predicate (i.e. `function` returns Boolean `true` when passed the value).
 
@@ -53,7 +55,8 @@ $filter(Account.Order.Product, function($v, $i, $a) {
 })
 ```
 
-## `$reduce(array, function [, init])`
+## `$reduce()`
+__Signature:__ `$reduce(array, function [, init])`
 
 Returns an aggregated value derived from applying the `function` parameter successively to each value in `array` in combination with the result of the previous application of the function.
 
@@ -72,7 +75,8 @@ This multiplies all the values together in the array `[1..5]` to return `120`.
 
 If the optional `init` parameter is supplied, then that value is used as the initial value in the aggregation (fold) process.  If not supplied, the initial value is the first value in the `array` parameter.
 
-## `$sift(object, function)`
+## `$sift()`
+__Signature:__ `$sift(object, function)`
 
 Returns an object that contains only the key/value pairs from the `object` parameter that satisfy the predicate `function` passed in as the second parameter.
 
