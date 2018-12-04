@@ -97,8 +97,8 @@ const siteConfig = {
   ogImage: 'img/docusaurus.png',
   twitterImage: 'img/docusaurus.png',
 
-  //editUrl: 'https://github.com/jsonata-js/jsonata-docs/edit/master/'
-    editUrl: 'https://github.com/andrew-coleman/jsonata-docs/edit/master/docs'
+  //editUrl: 'https://github.com/jsonata-js/jsonata/edit/master/docs/docs/'
+    editUrl: 'https://github.com/andrew-coleman/jsonata-docs/edit/master/docs/'
 
   // Show documentation's last contributor's name.
   // enableUpdateBy: true,
