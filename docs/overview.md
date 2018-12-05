@@ -1,6 +1,6 @@
 ---
 id: overview
-title: JSONata
+title: JSONata Documentation
 sidebar_label: Overview
 ---
 
