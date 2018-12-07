@@ -4,6 +4,8 @@ title: Programming constructs
 sidebar_label: Functional Programming
 ---
 
+So far, we have introduced all the parts of the language that allow us to extract data from an input JSON document, combine the data using string and numeric operators, and format the structure of the output JSON document.  What follows are the parts that turn this into a Turing complete, functional programming language.
+
 ## Comments
 
 JSONata expressions can be interleaved with comments using 'C' style comment delimeters.  For example,
@@ -35,6 +37,18 @@ JSONata expressions can be interleaved with comments using 'C' style comment del
 )
 ```
 Produces [this](http://try.jsonata.org/ryYn78Q0m), if you're interested!
+
+## Conditional logic
+
+If/then/else constructs can be written using the ternary operator "? :".
+
+`predicate ? expr1 : expr2`
+
+The expression `predicate` is evaluated.  If its effective boolean value (see definition) is `true` then `expr1` is evaluated and returned, otherwise `expr2` is evaluated and returned.
+
+__Examples__
+
+TBD
 
 ## Variables
 
@@ -72,7 +86,9 @@ The function is a first-class type, and can be stored in a variable just like an
 
 ### Invoking a function
 
-A function is invoked by following its reference (or definition) by parentheses containing a comma delimited sequence of arguments. Examples:
+A function is invoked by following its reference (or definition) by parentheses containing a comma delimited sequence of arguments. 
+
+__Examples__
 
 - `$uppercase("Hello")` returns the string "HELLO".
 - `$substring("hello world", 0, 5)` returns the string "hello"

@@ -26,7 +26,7 @@ __Examples__
     <div>"Fred Smith"</div>
   </div>
 
-- Concatenates the `Street` and `City` from the `Address` object with a comma separator. Note the use of [parentheses](control.md#parenthesized-expressions-and-blocks)
+- Concatenates the `Street` and `City` from the `Address` object with a comma separator. Note the use of [parentheses](composition.md#parenthesized-expressions-and-blocks)
   <div class="jsonata-ex">
     <div>Address.(Street & ', ' & City)</div>
     <div>"Hursley Park, Winchester"</div>

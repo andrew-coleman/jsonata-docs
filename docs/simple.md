@@ -161,7 +161,7 @@ If no index is specified for an array (i.e. no square brackets after the field r
     <div>[ "0203 544 1234", "01962 001234", "01962 001235", "077 7700 1234" ]</div>
   </div>
 
-- Applies the index to the array returned by `Phone.number`. One use of [parentheses](control.md#parenthesized-expressions-and-blocks).
+- Applies the index to the array returned by `Phone.number`. One use of [parentheses](composition.md#parenthesized-expressions-and-blocks).
   <div class="jsonata-ex">
     <div>(Phone.number)[0]</div>
     <div>"0203 544 1234"</div>
