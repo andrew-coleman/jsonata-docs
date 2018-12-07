@@ -1,19 +1,59 @@
 ---
 id: expressions
-title: Extracting and combining data with functions and expressions
+title: Manipulating data with functions and expressions
 sidebar_label: Functions and Expressions
 ---
 
 ## String expressions
 
-Path expressions that point to a string value will return that value.  Strings can be combined using the concatenation operator '&'
+Path expressions that point to a string value will return that value.
 
-Examples
+String literals can also be created by enclosing the
+sequence of characters in quotes. Either double quotes `"` or single quotes `'` can be used, provided the same quote type is 
+used for the start and end of the string literal.  Single quote characters may be included within a double quoted string and
+_vice versa_ withought escaping.  Characters within the string literal may be escaped using the same format
+as [JSON strings](https://tools.ietf.org/html/rfc7159#section-7).
 
-| Expression | Output | Comments|
-| ---------- | ------ |----|
-| <code>FirstName & ' ' & Surname</code> | `"Fred Smith"` | Concatenate `FirstName` followed by space <br>followed by `Surname`
-| <code>Address.(Street & ', ' & City)</code> | `"Hursley Park, Winchester"` | Another nice use of [parentheses](programming.md#parenthesized-expressions-and-blocks)
+Strings can be combined using the concatenation operator `&`. This is an infix operator and will join the two strings
+returned by the expressions either side of it.  This is the only operator that will attempt to typecast its operands to
+the expected (string) type.
+
+__Examples__
+
+- Concatenate `FirstName` followed by space followed by `Surname`
+  <div class="jsonata-ex">
+    <div>FirstName & ' ' & Surname</div>
+    <div>"Fred Smith"</div>
+  </div>
+
+- Concatenates the `Street` and `City` from the `Address` object with a comma separator. Note the use of [parentheses](control.md#parenthesized-expressions-and-blocks)
+  <div class="jsonata-ex">
+    <div>Address.(Street & ', ' & City)</div>
+    <div>"Hursley Park, Winchester"</div>
+  </div>
+
+- Casts the operands to strings, if necessary
+  <div class="jsonata-ex">
+    <div>5&0&true</div>
+    <div>"50true"</div>
+  </div>
+
+
+
+## Numeric expressions
+
+Path expressions that point to a number value will return that value.  
+
+Numeric literals can also be created using the same syntax as [JSON numbers](https://tools.ietf.org/html/rfc7159#section-6).
+
+Numbers can be combined using the usual mathematical operators to produce a resulting number.  Supported operators:
+- `+` addition
+- `-` subtraction
+- `*` multiplication
+- `/` division
+- `%` remainder (modulo)
+
+__Examples__
 
 Consider the following JSON document:
 ```
@@ -21,18 +61,6 @@ Consider the following JSON document:
   "Numbers": [1, 2.4, 3.5, 10, 20.9, 30]
 }
 ```
-
-
-## Numeric expressions
-
-Path expressions that point to a number value will return that value.  Numbers can be combined using the usual mathematical operators to produce a resulting number.  Supported operators:
-- `+` addition
-- `-` subtraction
-- `*` multiplication
-- `/` division
-- `%` remainder (modulo)
-
-_Examples_
 
 | Expression | Output | Comments
 | ---------- | ------ |----|
@@ -56,7 +84,7 @@ Often used in predicates, for comparison of two values.  Returns Boolean `true` 
 - `in` value is contained in an array
 
 
-_Examples_
+__Examples__
 
 | Expression | Output | Comments
 | ---------- | ------ |----|
@@ -77,7 +105,7 @@ Used to combine Boolean results, often to support more sophisticated predicate e
 
 Note that `not` is supported as a function, not an operator.
 
-_Examples_
+__Examples__
 
 | Expression | Output | Comments
 | ---------- | ------ |----|
