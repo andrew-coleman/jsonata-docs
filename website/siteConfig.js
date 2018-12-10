@@ -51,7 +51,7 @@ const siteConfig = {
 
   /* path to images for header/footer */
   headerIcon: 'img/jsonata-button.png',
-  footerIcon: 'img/jsonata-white-25.png',
+  footerIcon: 'img/jsonata-white-167.png',
   favicon: 'img/jsonata-button.png',
 
   /* Colors for website */

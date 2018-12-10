@@ -27,15 +27,13 @@ class Footer extends React.Component {
               <img
                 src={this.props.config.baseUrl + this.props.config.footerIcon}
                 alt={this.props.config.title}
-                width="66"
-                height="58"
               />
             )}
           </a>
           <div>
             <h5>JSONata</h5>
-      JSON query and transformation language.<br/>
-      Go play in the <a href="http://try.jsonata.org" target="_blank" rel="noreferrer noopener">JSONata Exerciser</a>
+            <a href="http://jsonata.org" target="_blank" rel="noreferrer noopener">JSON query and<br/>transformation language</a>
+            <a href="http://try.jsonata.org" target="_blank" rel="noreferrer noopener">Go play in the<br/>JSONata Exerciser</a>
           </div>
           <div>
             <h5>Community</h5>

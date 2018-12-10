@@ -56,3 +56,7 @@ a {
     /*color: rgb(200, 0, 80);*/
     color: #6ca158;
 }
+
+footer section div p {
+    color: white;
+}

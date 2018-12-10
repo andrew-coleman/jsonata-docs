@@ -178,10 +178,38 @@ Functions that have been assigned to variables can invoke themselves using that 
   <div>24</div>
 </div>
 
-Note that it is actually possible to write a recursive function using purely anonymous functions (i.e. nothing gets assigned to variables).  This is done using the [Y-combinator](https://en.wikipedia.org/wiki/Fixed-point_combinator#Fixed_point_combinators_in_lambda_calculus) which might be an interesting [diversion](#advanced-stuff) for those interested in functional programming.
+Note that it is actually possible to write a recursive function using purely anonymous functions (i.e. nothing gets assigned to variables).  This is done using the [Y-combinator](https://en.wikipedia.org/wiki/Fixed-point_combinator#Fixed_point_combinators_in_lambda_calculus) which might be an interesting [diversion](#advanced-example-the-y-combinator) for those interested in functional programming.
 
 ### Tail call optimization (Tail recursion)
 
+A recursive function adds a new frame to the call stack each time it invokes itself.  This can eventually lead to stack exhaustion if the function recuses beyond a certain limit.  Consider the classic recursive implementation of the factorial function
+
+```
+(
+  $factorial := function($x) {
+    $x <= 1 ? 1 : $x * $factorial($x-1)
+  };
+  $factorial(170)
+)
+```
+
+This function works by pushing the number onto the stack, then when the stack unwinds, multiplying it by the result of the factorial of the number minus one.  Written in this way, the JSONata evaluator has no choice but to use the call stack to store the intermediate results.  Given a large enough number, the call stack will overflow.
+
+This is a recognised problem with functional programming and the solution is to rewrite the function slightly to avoid the _need_ for the stack to store the itermediate result.  The following implementation of factorial achieves this
+
+```
+(
+  $factorial := function($x){(
+    $iter := function($x, $acc) {
+      $x <= 1 ? $acc : $iter($x - 1, $x * $acc)
+    };
+    $iter($x, 1)
+  )};
+  $factorial(170)
+)
+```
+
+Here, the multiplication is done _before_ the function invokes itself and the intermediate result is carried in the second parameter `$acc` (accumulator).  The invocation of itself is the _last_ thing that the function does.  This is known as a 'tail call', and when the JSONata parser spots this, it internally rewrites the recursion as a simple loop.  Thus it can run indefinitely without growing the call stack.  Functions written in this way are said to be [tail recursive](https://en.wikipedia.org/wiki/Tail_call).
 
 ### Higher order functions
 
@@ -295,7 +323,7 @@ __Examples__
 
 TBD
 
-### Advanced stuff - The Y-combinator
+### Advanced example - The Y-combinator
 
 There is no need to read this section - it will do nothing for your sanity or ability to manipulate JSON data.
 
@@ -303,7 +331,7 @@ Earlier we learned how to write a recursive function to calculate the factorial 
 
 `λ($f) { λ($x) { $x($x) }( λ($g) { $f( (λ($a) {$g($g)($a)}))})}(λ($f) { λ($n) { $n < 2 ? 1 : $n * $f($n - 1) } })(6)`
 
-which produces the result `720`.  The Greek lambda (λ) symbol can be used in place of the word `function` which, if you can find it on your keyboard, will save screen space and please the fans of lambda calculus.
+which produces the result `720`.  The Greek lambda (λ) symbol can be used in place of the word `function` which, if you can find it on your keyboard, will save screen space and please the fans of [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus).
 
 The first part of this above expression is an implementation of the [Y-combinator](https://en.wikipedia.org/wiki/Fixed-point_combinator#Fixed_point_combinators_in_lambda_calculus) in this language.  We could assign it to a variable and apply it to other recursive anonymous functions:
 
