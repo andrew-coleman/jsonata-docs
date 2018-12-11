@@ -30,6 +30,8 @@ const siteConfig = {
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
 
+  docsUrl: '',
+
   // Used for publishing and more
   projectName: 'andrew-coleman.github.io',
   //organizationName: 'jsonata-js',
